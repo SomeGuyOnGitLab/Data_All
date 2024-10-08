@@ -1,0 +1,6 @@
+SELECT sender_id, count(message_id) message_count
+FROM messages
+where DATE_PART('year', sent_date::DATE) = 2022
+AND DATE_PART('month', sent_date::DATE) = 8
+Group by sender_id
+Order by count(message_id) desc LIMIT 2;
