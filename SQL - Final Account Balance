@@ -1,0 +1,5 @@
+select balance.account_id, sum(balance.balance_amount) from
+(select account_id, case when transaction_type = 'Deposit' then amount
+                        ELSE -amount END as balance_amount
+                        from transactions) balance
+group by balance.account_id;
