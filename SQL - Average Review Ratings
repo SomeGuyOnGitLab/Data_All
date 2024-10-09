@@ -1,0 +1,8 @@
+SELECT DATE_PART('month', submit_date::DATE) as mth, 
+       product_id as product,
+       ROUND(avg(stars),2) as avg_stars
+from reviews
+Group by DATE_PART('month', submit_date::DATE), 
+       product_id
+Order by DATE_PART('month', submit_date::DATE), 
+       product_id;
